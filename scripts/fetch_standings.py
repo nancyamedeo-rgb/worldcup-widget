@@ -18,11 +18,14 @@ from datetime import datetime, timezone
 API_URL = "https://api.football-data.org/v4/competitions/WC/standings"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "standings.json")
 
-# Maps football-data.org group labels (e.g. "GROUP_A") -> single letter
-def group_letter(raw_group):
-    if not raw_group:
-        return None
-    return raw_group.replace("GROUP_", "").strip().upper()
+# Maps football-data.org group labels (e.g. "GROUP A", "GROUP_A", or "A")
+   # to a single letter, e.g. "A".
+   def group_letter(raw_group):
+       if not raw_group:
+           return None
+       cleaned = raw_group.strip().upper()
+       cleaned = cleaned.replace("GROUP_", "").replace("GROUP ", "")
+       return cleaned.strip()
 
 
 def fetch_standings(api_key):
