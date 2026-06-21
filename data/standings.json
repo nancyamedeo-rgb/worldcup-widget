@@ -350,6 +350,34 @@
     ],
     "G": [
       {
+        "name": "Iran",
+        "shortName": "Iran",
+        "tla": "IRN",
+        "crest": "https://crests.football-data.org/iran.svg",
+        "gp": 2,
+        "w": 0,
+        "d": 2,
+        "l": 0,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 2
+      },
+      {
+        "name": "Belgium",
+        "shortName": "Belgium",
+        "tla": "BEL",
+        "crest": "https://crests.football-data.org/805.svg",
+        "gp": 2,
+        "w": 0,
+        "d": 2,
+        "l": 0,
+        "gf": 1,
+        "ga": 1,
+        "gd": 0,
+        "pts": 2
+      },
+      {
         "name": "New Zealand",
         "shortName": "New Zealand",
         "tla": "NZL",
@@ -360,34 +388,6 @@
         "l": 0,
         "gf": 2,
         "ga": 2,
-        "gd": 0,
-        "pts": 1
-      },
-      {
-        "name": "Iran",
-        "shortName": "Iran",
-        "tla": "IRN",
-        "crest": "https://crests.football-data.org/iran.svg",
-        "gp": 1,
-        "w": 0,
-        "d": 1,
-        "l": 0,
-        "gf": 2,
-        "ga": 2,
-        "gd": 0,
-        "pts": 1
-      },
-      {
-        "name": "Belgium",
-        "shortName": "Belgium",
-        "tla": "BEL",
-        "crest": "https://crests.football-data.org/805.svg",
-        "gp": 1,
-        "w": 0,
-        "d": 1,
-        "l": 0,
-        "gf": 1,
-        "ga": 1,
         "gd": 0,
         "pts": 1
       },
@@ -408,6 +408,20 @@
     ],
     "H": [
       {
+        "name": "Spain",
+        "shortName": "Spain",
+        "tla": "ESP",
+        "crest": "https://crests.football-data.org/760.svg",
+        "gp": 2,
+        "w": 1,
+        "d": 1,
+        "l": 0,
+        "gf": 4,
+        "ga": 0,
+        "gd": 4,
+        "pts": 4
+      },
+      {
         "name": "Uruguay",
         "shortName": "Uruguay",
         "tla": "URU",
@@ -426,27 +440,13 @@
         "shortName": "Saudi Arabia",
         "tla": "KSA",
         "crest": "https://crests.football-data.org/saudi_arabia.svg",
-        "gp": 1,
+        "gp": 2,
         "w": 0,
         "d": 1,
-        "l": 0,
+        "l": 1,
         "gf": 1,
-        "ga": 1,
-        "gd": 0,
-        "pts": 1
-      },
-      {
-        "name": "Spain",
-        "shortName": "Spain",
-        "tla": "ESP",
-        "crest": "https://crests.football-data.org/760.svg",
-        "gp": 1,
-        "w": 0,
-        "d": 1,
-        "l": 0,
-        "gf": 0,
-        "ga": 0,
-        "gd": 0,
+        "ga": 5,
+        "gd": -4,
         "pts": 1
       },
       {
@@ -697,7 +697,7 @@
       }
     ]
   },
-  "updatedAt": "2026-06-21T15:25:47.962420+00:00",
+  "updatedAt": "2026-06-21T20:55:09.903489+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
