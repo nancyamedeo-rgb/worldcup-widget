@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FIFA World Cup 2026 – Group Standings</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --gold:#C9A84C; --gold2:#F0C94A; --navy:#0A0E1A; --navy3:#1A2235;
+    --gray:#6B7280; --white:#FFFFFF; --green:#22C55E; --red:#EF4444; --amber:#F59E0B;
+  }
+  html, body { width:1920px; height:1080px; overflow:hidden; background:var(--navy); font-family:'Inter',sans-serif; color:var(--white); }
+
+  /* ── HEADER ── */
+  header { display:flex; align-items:center; gap:20px; padding:10px 32px; background:linear-gradient(135deg,#0A0E1A,#1A2235,#0D1B3E); border-bottom:2px solid var(--gold); height:80px; flex-shrink:0; }
+  .logo-placeholder { width:56px; height:56px; border:2px dashed var(--gold); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:9px; color:var(--gold); text-align:center; line-height:1.3; padding:4px; flex-shrink:0; }
+  header h1 { font-family:'Bebas Neue',sans-serif; font-size:34px; letter-spacing:3px; color:var(--gold2); line-height:1; }
+  header p  { font-size:11px; color:var(--gray); letter-spacing:2px; text-transform:uppercase; margin-top:3px; }
+  .header-right { margin-left:auto; text-align:right; }
+  .clock { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--white); letter-spacing:2px; }
+  #statusBar { font-size:10px; color:var(--gray); margin-top:4px; }
+  #statusBar.loading { color:var(--gold); }
+  #statusBar.error   { color:var(--red); }
+
+  /* ── SCROLL ── */
+  .scroll-wrapper { height:1000px; overflow:hidden; position:relative; }
+  .scroll-track   { display:flex; flex-direction:column; }
+
+  /* ── ROW OF 4 GROUPS ── */
+  .groups-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; padding:14px 32px; }
+
+  /* ── GROUP CARD ── */
+  .group-card { background:var(--navy3); border:1px solid #1F2937; border-radius:10px; overflow:hidden; }
+  .group-title { background:linear-gradient(90deg,#1A2235,#0D1B3E); padding:7px 14px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #2D3748; }
+  .group-name  { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:var(--gold2); }
+  .group-games { font-size:10px; color:var(--gray); letter-spacing:1px; }
+
+  /* ── TABLE ── */
+  .standings-table { width:100%; border-collapse:collapse; table-layout:fixed; }
+  .standings-table thead tr { border-bottom:1px solid #2D3748; }
+  .standings-table thead th {
+    font-size:9px; font-weight:700; letter-spacing:1px; color:var(--gray);
+    text-transform:uppercase; padding:5px 0; text-align:center; overflow:hidden;
+  }
+  .standings-table thead th.th-team { text-align:left; padding-left:12px; width:42%; }
+  .standings-table thead th.th-pts  { color:var(--gold); }
+
+  /* Fixed column widths so PTS never gets cut */
+  .standings-table col.c-team { width:42%; }
+  .standings-table col.c-stat { width:6.5%; }
+  .standings-table col.c-pts  { width:8%; }
+
+  .standings-table tbody tr { border-bottom:1px solid rgba(255,255,255,0.04); }
+  .standings-table tbody tr:last-child { border-bottom:none; }
+  .standings-table tbody tr.auto-qualify    { background:rgba(34,197,94,0.07);  border-left:3px solid var(--green); }
+  .standings-table tbody tr.possible-qualify{ background:rgba(245,158,11,0.07); border-left:3px solid var(--amber); }
+  .standings-table tbody tr.eliminated      { opacity:0.45; border-left:3px solid transparent; }
+
+  .standings-table td { padding:7px 0; font-size:12px; text-align:center; vertical-align:middle; overflow:hidden; }
+  .td-team { text-align:left !important; padding-left:10px !important; }
+  .team-cell { display:flex; align-items:center; gap:7px; }
+  .pos-num  { font-size:9px; color:var(--gray); width:12px; text-align:center; flex-shrink:0; }
+  .flag-sm  { font-size:18px; line-height:1; flex-shrink:0; }
+  .team-nm  { font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pts-cell { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--gold2); letter-spacing:1px; }
+  .gd-pos { color:var(--green); }
+  .gd-neg { color:var(--red); }
+  .gd-zero{ color:var(--gray); }
+
+  .qual-key { display:flex; gap:14px; padding:5px 12px; border-top:1px solid #2D3748; background:rgba(0,0,0,0.2); }
+  .qual-key-item { display:flex; align-items:center; gap:5px; font-size:9px; color:var(--gray); }
+  .qual-dot { width:7px; height:7px; border-radius:1px; }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="fifa_logo.jpg" style="width:60px;height:60px;object-fit:contain;">
+  <div>
+    <h1>FIFA World Cup 2026 · Group Standings</h1>
+    <p>Group Stage: June 11 – June 27, 2026 · 48 Teams · 12 Groups</p>
+  </div>
+  <div class="header-right">
+    <div class="clock" id="clock">--:--</div>
+    <div id="statusBar" class="loading">Loading standings…</div>
+  </div>
+</header>
+
+<div class="scroll-wrapper">
+  <div class="scroll-track" id="scrollTrack"></div>
+</div>
+
+<script>
+const GROUP_SEEDS = {
+  A: [ {f:"🇲🇽",n:"Mexico"}, {f:"🇰🇷",n:"South Korea"}, {f:"🇨🇿",n:"Czechia"}, {f:"🇿🇦",n:"South Africa"} ],
+  B: [ {f:"🇨🇦",n:"Canada"}, {f:"🇧🇦",n:"Bosnia-Herz."}, {f:"🇶🇦",n:"Qatar"}, {f:"🇨🇭",n:"Switzerland"} ],
+  C: [ {f:"🇧🇷",n:"Brazil"}, {f:"🇲🇦",n:"Morocco"}, {f:"🇭🇹",n:"Haiti"}, {f:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",n:"Scotland"} ],
+  D: [ {f:"🇺🇸",n:"USA"}, {f:"🇦🇺",n:"Australia"}, {f:"🇹🇷",n:"Türkiye"}, {f:"🇵🇾",n:"Paraguay"} ],
+  E: [ {f:"🇩🇪",n:"Germany"}, {f:"🇨🇮",n:"Ivory Coast"}, {f:"🇪🇨",n:"Ecuador"}, {f:"🇨🇼",n:"Curaçao"} ],
+  F: [ {f:"🇳🇱",n:"Netherlands"}, {f:"🇯🇵",n:"Japan"}, {f:"🇸🇪",n:"Sweden"}, {f:"🇹🇳",n:"Tunisia"} ],
+  G: [ {f:"🇧🇪",n:"Belgium"}, {f:"🇪🇬",n:"Egypt"}, {f:"🇮🇷",n:"Iran"}, {f:"🇳🇿",n:"New Zealand"} ],
+  H: [ {f:"🇪🇸",n:"Spain"}, {f:"🇺🇾",n:"Uruguay"}, {f:"🇸🇦",n:"Saudi Arabia"}, {f:"🇨🇻",n:"Cape Verde"} ],
+  I: [ {f:"🇫🇷",n:"France"}, {f:"🇸🇳",n:"Senegal"}, {f:"🇮🇶",n:"Iraq"}, {f:"🇳🇴",n:"Norway"} ],
+  J: [ {f:"🇦🇷",n:"Argentina"}, {f:"🇩🇿",n:"Algeria"}, {f:"🇦🇹",n:"Austria"}, {f:"🇯🇴",n:"Jordan"} ],
+  K: [ {f:"🇵🇹",n:"Portugal"}, {f:"🇨🇴",n:"Colombia"}, {f:"🇨🇩",n:"DR Congo"}, {f:"🇺🇿",n:"Uzbekistan"} ],
+  L: [ {f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, {f:"🇭🇷",n:"Croatia"}, {f:"🇬🇭",n:"Ghana"}, {f:"🇵🇦",n:"Panama"} ],
+};
+
+let standings = {};
+Object.keys(GROUP_SEEDS).forEach(g => {
+  standings[g] = GROUP_SEEDS[g].map(t => ({...t, gp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0}));
+});
+
+/* ── CONFIG ──
+   Replace OWNER/REPO below with your GitHub username and repo name.
+   This points at the raw JSON file kept up to date by the GitHub Action
+   (see .github/workflows/update-standings.yml + scripts/fetch_standings.py). */
+const DATA_URL = "https://raw.githubusercontent.com/OWNER/REPO/main/data/standings.json";
+
+/* Map a team's TLA / short name from football-data.org back to the flag
+   emoji in GROUP_SEEDS, falling back to fuzzy name matching, then a
+   generic flag if nothing matches. */
+function resolveFlag(groupLetter, team) {
+  const seeds = GROUP_SEEDS[groupLetter] || [];
+  const target = (team.shortName || team.name || "").toLowerCase();
+  let seed = seeds.find(s => target.includes(s.n.toLowerCase()) || s.n.toLowerCase().includes(target.split(" ")[0]));
+  if (!seed) {
+    // try matching on first word only (handles "South Korea" vs "Korea Republic" etc.)
+    const firstWord = target.split(" ")[0];
+    seed = seeds.find(s => s.n.toLowerCase().includes(firstWord));
+  }
+  return seed ? seed.f : "🏳";
+}
+
+async function fetchStandings() {
+  setStatus("Fetching latest standings…", "loading");
+  try {
+    // Cache-bust so the browser/CDN doesn't serve a stale copy of the raw file.
+    const res = await fetch(DATA_URL + "?t=" + Date.now());
+    if (!res.ok) throw new Error("Fetch failed: HTTP " + res.status);
+    const data = await res.json();
+
+    if (data.status === "error" || !data.groups || Object.keys(data.groups).length === 0) {
+      throw new Error(data.lastError || "No standings data available yet");
+    }
+
+    Object.keys(data.groups).forEach(g => {
+      if (!GROUP_SEEDS[g]) return;
+      standings[g] = data.groups[g].map(t => ({
+        f: resolveFlag(g, t),
+        n: t.shortName || t.name,
+        gp: t.gp, w: t.w, d: t.d, l: t.l,
+        gf: t.gf, ga: t.ga, gd: t.gd, pts: t.pts
+      }));
+    });
+
+    const updated = data.updatedAt ? new Date(data.updatedAt) : new Date();
+    const label = data.status === "stale"
+      ? "Showing cached data from " + updated.toLocaleTimeString()
+      : "Updated " + updated.toLocaleTimeString() + " · Next refresh ~hourly";
+    setStatus(label, data.status === "stale" ? "error" : "");
+  } catch(e) {
+    console.error("Standings fetch error:", e);
+    setStatus("Update failed — showing last data", "error");
+  }
+  renderAndScroll();
+}
+
+/* ── BUILD GROUP CARD ── */
+function gdStr(gd) { return gd > 0 ? "+"+gd : ""+gd; }
+
+function rowClass(pos, gamesPlayed) {
+  if (!gamesPlayed) return "";
+  if (pos <= 2) return "auto-qualify";
+  if (pos === 3) return "possible-qualify";
+  return "eliminated";
+}
+
+function buildGroupCard(name, teams) {
+  const totalGP = teams.reduce((s,t) => s+t.gp, 0);
+  const rows = teams.map((t,i) => {
+    const gc = t.gd > 0 ? "gd-pos" : t.gd < 0 ? "gd-neg" : "gd-zero";
+    return `<tr class="${rowClass(i+1, totalGP)}">
+      <td class="td-team"><div class="team-cell">
+        <span class="pos-num">${i+1}</span>
+        <span class="flag-sm">${t.f}</span>
+        <span class="team-nm">${t.n}</span>
+      </div></td>
+      <td>${t.gp}</td><td>${t.w}</td><td>${t.d}</td><td>${t.l}</td>
+      <td>${t.gf}</td><td>${t.ga}</td>
+      <td class="${gc}">${gdStr(t.gd)}</td>
+      <td class="pts-cell">${t.pts}</td>
+    </tr>`;
+  }).join("");
+
+  return `<div class="group-card">
+    <div class="group-title">
+      <span class="group-name">GROUP ${name}</span>
+      <span class="group-games">MD${totalGP>0?Math.ceil(totalGP/2):0}/3</span>
+    </div>
+    <table class="standings-table">
+      <colgroup>
+        <col class="c-team">
+        <col class="c-stat"><col class="c-stat"><col class="c-stat"><col class="c-stat">
+        <col class="c-stat"><col class="c-stat"><col class="c-stat">
+        <col class="c-pts">
+      </colgroup>
+      <thead><tr>
+        <th class="th-team">Team</th>
+        <th>GP</th><th>W</th><th>D</th><th>L</th>
+        <th>GF</th><th>GA</th><th>GD</th><th class="th-pts">PTS</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div class="qual-key">
+      <div class="qual-key-item"><div class="qual-dot" style="background:var(--green)"></div>Auto (Top 2)</div>
+      <div class="qual-key-item"><div class="qual-dot" style="background:var(--amber)"></div>Possible 3rd</div>
+    </div>
+  </div>`;
+}
+
+/* ── RENDER — 3 rows of 4 groups, duplicated for infinite scroll ── */
+function buildHTML() {
+  const groups = Object.entries(standings);
+  // 12 groups → 3 rows of 4
+  const rows = [groups.slice(0,4), groups.slice(4,8), groups.slice(8,12)];
+  return rows.map(row =>
+    `<div class="groups-row">${row.map(([name,teams]) => buildGroupCard(name,teams)).join("")}</div>`
+  ).join("");
+}
+
+let scrollPos = 0, scrollRAF = null;
+function startScroll() {
+  if (scrollRAF) cancelAnimationFrame(scrollRAF);
+  const track = document.getElementById("scrollTrack");
+  const half  = track.scrollHeight / 2;
+  function step() {
+    scrollPos += 0.4;
+    if (scrollPos >= half) scrollPos = 0;
+    track.style.transform = "translateY(-" + scrollPos + "px)";
+    scrollRAF = requestAnimationFrame(step);
+  }
+  scrollRAF = requestAnimationFrame(step);
+}
+
+function renderAndScroll() {
+  const track = document.getElementById("scrollTrack");
+  const html  = buildHTML();
+  track.innerHTML = html + html; // duplicate for seamless loop
+  startScroll();
+}
+
+function setStatus(msg, cls) {
+  const el = document.getElementById("statusBar");
+  el.textContent = msg; el.className = cls || "";
+}
+
+function updateClock() {
+  const n = new Date();
+  document.getElementById("clock").textContent =
+    n.getHours().toString().padStart(2,"0") + ":" + n.getMinutes().toString().padStart(2,"0");
+}
+
+renderAndScroll();
+fetchStandings();
+setInterval(fetchStandings, 15 * 60 * 1000); // poll every 15 min; data itself updates ~hourly
+setTimeout(() => location.reload(), 60 * 60 * 1000); // full reload every hour as a safety net
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
