@@ -466,6 +466,20 @@
     ],
     "I": [
       {
+        "name": "France",
+        "shortName": "France",
+        "tla": "FRA",
+        "crest": "https://crests.football-data.org/773.svg",
+        "gp": 2,
+        "w": 2,
+        "d": 0,
+        "l": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "pts": 6
+      },
+      {
         "name": "Norway",
         "shortName": "Norway",
         "tla": "NOR",
@@ -477,20 +491,6 @@
         "gf": 4,
         "ga": 1,
         "gd": 3,
-        "pts": 3
-      },
-      {
-        "name": "France",
-        "shortName": "France",
-        "tla": "FRA",
-        "crest": "https://crests.football-data.org/773.svg",
-        "gp": 1,
-        "w": 1,
-        "d": 0,
-        "l": 0,
-        "gf": 3,
-        "ga": 1,
-        "gd": 2,
         "pts": 3
       },
       {
@@ -512,13 +512,13 @@
         "shortName": "Iraq",
         "tla": "IRQ",
         "crest": "https://crests.football-data.org/iraq.svg",
-        "gp": 1,
+        "gp": 2,
         "w": 0,
         "d": 0,
-        "l": 1,
+        "l": 2,
         "gf": 1,
-        "ga": 4,
-        "gd": -3,
+        "ga": 5,
+        "gd": -4,
         "pts": 0
       }
     ],
@@ -528,27 +528,27 @@
         "shortName": "Argentina",
         "tla": "ARG",
         "crest": "https://crests.football-data.org/762.png",
-        "gp": 1,
-        "w": 1,
+        "gp": 2,
+        "w": 2,
         "d": 0,
         "l": 0,
-        "gf": 3,
+        "gf": 5,
         "ga": 0,
-        "gd": 3,
-        "pts": 3
+        "gd": 5,
+        "pts": 6
       },
       {
         "name": "Austria",
         "shortName": "Austria",
         "tla": "AUT",
         "crest": "https://crests.football-data.org/816.svg",
-        "gp": 1,
+        "gp": 2,
         "w": 1,
         "d": 0,
-        "l": 0,
+        "l": 1,
         "gf": 3,
-        "ga": 1,
-        "gd": 2,
+        "ga": 3,
+        "gd": 0,
         "pts": 3
       },
       {
@@ -697,7 +697,7 @@
       }
     ]
   },
-  "updatedAt": "2026-06-22T15:59:41.345598+00:00",
+  "updatedAt": "2026-06-22T22:26:40.543969+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
