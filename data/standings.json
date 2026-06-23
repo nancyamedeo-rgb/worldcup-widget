@@ -582,6 +582,20 @@
     ],
     "K": [
       {
+        "name": "Portugal",
+        "shortName": "Portugal",
+        "tla": "POR",
+        "crest": "https://crests.football-data.org/765.svg",
+        "gp": 2,
+        "w": 1,
+        "d": 1,
+        "l": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "pts": 4
+      },
+      {
         "name": "Colombia",
         "shortName": "Colombia",
         "tla": "COL",
@@ -610,31 +624,17 @@
         "pts": 1
       },
       {
-        "name": "Portugal",
-        "shortName": "Portugal",
-        "tla": "POR",
-        "crest": "https://crests.football-data.org/765.svg",
-        "gp": 1,
-        "w": 0,
-        "d": 1,
-        "l": 0,
-        "gf": 1,
-        "ga": 1,
-        "gd": 0,
-        "pts": 1
-      },
-      {
         "name": "Uzbekistan",
         "shortName": "Uzbekistan",
         "tla": "UZB",
         "crest": "https://crests.football-data.org/8070.png",
-        "gp": 1,
+        "gp": 2,
         "w": 0,
         "d": 0,
-        "l": 1,
+        "l": 2,
         "gf": 1,
-        "ga": 3,
-        "gd": -2,
+        "ga": 6,
+        "gd": -5,
         "pts": 0
       }
     ],
@@ -697,7 +697,7 @@
       }
     ]
   },
-  "updatedAt": "2026-06-23T10:50:24.333767+00:00",
+  "updatedAt": "2026-06-23T18:17:51.909171+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
