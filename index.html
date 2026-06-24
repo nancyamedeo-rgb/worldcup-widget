@@ -14,7 +14,6 @@
 
   /* ── HEADER ── */
   header { display:flex; align-items:center; gap:20px; padding:10px 32px; background:linear-gradient(135deg,#0A0E1A,#1A2235,#0D1B3E); border-bottom:2px solid var(--gold); height:80px; flex-shrink:0; }
-  .logo-placeholder { width:56px; height:56px; border:2px dashed var(--gold); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:9px; color:var(--gold); text-align:center; line-height:1.3; padding:4px; flex-shrink:0; }
   header h1 { font-family:'Bebas Neue',sans-serif; font-size:34px; letter-spacing:3px; color:var(--gold2); line-height:1; }
   header p  { font-size:11px; color:var(--gray); letter-spacing:2px; text-transform:uppercase; margin-top:3px; }
   .header-right { margin-left:auto; text-align:right; }
@@ -27,50 +26,149 @@
   .scroll-wrapper { height:1000px; overflow:hidden; position:relative; }
   .scroll-track   { display:flex; flex-direction:column; }
 
-  /* ── ROW OF 4 GROUPS ── */
-  .groups-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; padding:14px 32px; }
+  /* ── SECTION DIVIDER ── */
+  .section-divider {
+    display:flex; align-items:center; gap:16px;
+    padding:18px 40px 10px;
+  }
+  .section-divider-label {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:28px; letter-spacing:4px; color:var(--gold2);
+    white-space:nowrap;
+  }
+  .section-divider-line {
+    flex:1; height:1px; background:linear-gradient(90deg, var(--gold), transparent);
+  }
 
-  /* ── GROUP CARD ── */
-  .group-card { background:var(--navy3); border:1px solid #1F2937; border-radius:10px; overflow:hidden; }
-  .group-title { background:linear-gradient(90deg,#1A2235,#0D1B3E); padding:7px 14px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #2D3748; }
-  .group-name  { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:3px; color:var(--gold2); }
-  .group-games { font-size:10px; color:var(--gray); letter-spacing:1px; }
+  /* ══════════════════════════════
+     MATCH SCHEDULE CARDS
+  ══════════════════════════════ */
+  .matches-grid {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:16px;
+    padding:0 40px 24px;
+  }
 
-  /* ── TABLE ── */
+  .match-card {
+    background:var(--navy3);
+    border:1px solid #1F2937;
+    border-radius:12px;
+    padding:20px 28px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+
+  .match-card-header {
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .match-group-badge {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:16px; letter-spacing:2px;
+    color:var(--gold2);
+    background:rgba(201,168,76,0.12);
+    padding:3px 10px; border-radius:4px;
+  }
+  .match-kickoff {
+    font-size:16px; font-weight:600; color:var(--gray);
+    letter-spacing:0.5px;
+  }
+  .match-kickoff.live { color:var(--red); animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .match-teams {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .match-team {
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .match-team-flag { font-size:40px; line-height:1; }
+  .match-team-name {
+    font-size:22px; font-weight:700; color:var(--white);
+    text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    max-width:200px;
+  }
+  .match-team-tla  { font-size:13px; color:var(--gray); letter-spacing:1px; }
+
+  .match-vs {
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    flex-shrink:0;
+  }
+  .match-score {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:52px; color:var(--gold2); letter-spacing:4px; line-height:1;
+  }
+  .match-vs-label {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:22px; color:var(--gray); letter-spacing:3px;
+  }
+
+  .match-status-bar {
+    text-align:center;
+    font-size:13px; font-weight:600; letter-spacing:1px;
+    color:var(--gray); text-transform:uppercase;
+  }
+  .match-status-bar.finished { color:var(--green); }
+  .match-status-bar.live     { color:var(--red); }
+
+  .no-matches-today {
+    padding:32px 40px;
+    font-size:22px; color:var(--gray); font-style:italic;
+    text-align:center;
+  }
+
+  /* ══════════════════════════════
+     GROUP STANDING CARDS (1 per row)
+  ══════════════════════════════ */
+  .group-card {
+    margin:0 40px 16px;
+    background:var(--navy3);
+    border:1px solid #1F2937;
+    border-radius:12px;
+    overflow:hidden;
+  }
+
+  .group-title {
+    background:linear-gradient(90deg,#1A2235,#0D1B3E);
+    padding:12px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid #2D3748;
+  }
+  .group-name  { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:4px; color:var(--gold2); }
+  .group-games { font-size:13px; color:var(--gray); letter-spacing:1px; }
+
   .standings-table { width:100%; border-collapse:collapse; table-layout:fixed; }
   .standings-table thead tr { border-bottom:1px solid #2D3748; }
   .standings-table thead th {
-    font-size:9px; font-weight:700; letter-spacing:1px; color:var(--gray);
-    text-transform:uppercase; padding:5px 0; text-align:center; overflow:hidden;
+    font-size:13px; font-weight:700; letter-spacing:1px; color:var(--gray);
+    text-transform:uppercase; padding:10px 0; text-align:center;
   }
-  .standings-table thead th.th-team { text-align:left; padding-left:12px; width:42%; }
+  .standings-table thead th.th-team { text-align:left; padding-left:24px; width:40%; }
   .standings-table thead th.th-pts  { color:var(--gold); }
 
-  /* Fixed column widths so PTS never gets cut */
-  .standings-table col.c-team { width:42%; }
-  .standings-table col.c-stat { width:6.5%; }
-  .standings-table col.c-pts  { width:8%; }
+  .standings-table col.c-team { width:40%; }
+  .standings-table col.c-stat { width:7%; }
+  .standings-table col.c-pts  { width:9%; }
 
-  .standings-table tbody tr { border-bottom:1px solid rgba(255,255,255,0.04); }
+  .standings-table tbody tr { border-bottom:1px solid rgba(255,255,255,0.05); }
   .standings-table tbody tr:last-child { border-bottom:none; }
-  .standings-table tbody tr.auto-qualify    { background:rgba(34,197,94,0.07);  border-left:3px solid var(--green); }
-  .standings-table tbody tr.possible-qualify{ background:rgba(245,158,11,0.07); border-left:3px solid var(--amber); }
-  .standings-table tbody tr.eliminated      { opacity:0.45; border-left:3px solid transparent; }
+  .standings-table tbody tr.auto-qualify     { background:rgba(34,197,94,0.07);  border-left:4px solid var(--green); }
+  .standings-table tbody tr.possible-qualify { background:rgba(245,158,11,0.07); border-left:4px solid var(--amber); }
+  .standings-table tbody tr.eliminated       { opacity:0.45; border-left:4px solid transparent; }
 
-  .standings-table td { padding:7px 0; font-size:12px; text-align:center; vertical-align:middle; overflow:hidden; }
-  .td-team { text-align:left !important; padding-left:10px !important; }
-  .team-cell { display:flex; align-items:center; gap:7px; }
-  .pos-num  { font-size:9px; color:var(--gray); width:12px; text-align:center; flex-shrink:0; }
-  .flag-sm  { font-size:18px; line-height:1; flex-shrink:0; }
-  .team-nm  { font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .pts-cell { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--gold2); letter-spacing:1px; }
+  .standings-table td { padding:14px 0; font-size:20px; text-align:center; vertical-align:middle; }
+  .td-team { text-align:left !important; padding-left:20px !important; }
+  .team-cell { display:flex; align-items:center; gap:12px; }
+  .pos-num   { font-size:13px; color:var(--gray); width:16px; text-align:center; flex-shrink:0; }
+  .flag-sm   { font-size:28px; line-height:1; flex-shrink:0; }
+  .team-nm   { font-size:20px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pts-cell  { font-family:'Bebas Neue',sans-serif; font-size:32px; color:var(--gold2); letter-spacing:1px; }
   .gd-pos { color:var(--green); }
   .gd-neg { color:var(--red); }
   .gd-zero{ color:var(--gray); }
 
-  .qual-key { display:flex; gap:14px; padding:5px 12px; border-top:1px solid #2D3748; background:rgba(0,0,0,0.2); }
-  .qual-key-item { display:flex; align-items:center; gap:5px; font-size:9px; color:var(--gray); }
-  .qual-dot { width:7px; height:7px; border-radius:1px; }
+  .qual-key { display:flex; gap:20px; padding:8px 24px; border-top:1px solid #2D3748; background:rgba(0,0,0,0.2); }
+  .qual-key-item { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--gray); }
+  .qual-dot { width:8px; height:8px; border-radius:2px; }
 </style>
 </head>
 <body>
@@ -107,64 +205,98 @@ const GROUP_SEEDS = {
   L: [ {f:"🏴󠁧󠁢󠁥󠁮󠁧󠁿",n:"England"}, {f:"🇭🇷",n:"Croatia"}, {f:"🇬🇭",n:"Ghana"}, {f:"🇵🇦",n:"Panama"} ],
 };
 
+const DATA_URL = "https://raw.githubusercontent.com/nancyamedeo-rgb/worldcup-widget/main/data/standings.json";
+
 let standings = {};
 Object.keys(GROUP_SEEDS).forEach(g => {
   standings[g] = GROUP_SEEDS[g].map(t => ({...t, gp:0,w:0,d:0,l:0,gf:0,ga:0,gd:0,pts:0}));
 });
+let todayMatches = [];
 
-/* ── CONFIG ──
-   Replace OWNER/REPO below with your GitHub username and repo name.
-   This points at the raw JSON file kept up to date by the GitHub Action
-   (see .github/workflows/update-standings.yml + scripts/fetch_standings.py). */
-const DATA_URL = "https://raw.githubusercontent.com/nancyamedeo-rgb/worldcup-widget/main/data/standings.json";
-
-/* Map a team's TLA / short name from football-data.org back to the flag
-   emoji in GROUP_SEEDS, falling back to fuzzy name matching, then a
-   generic flag if nothing matches. */
+/* ── FLAG RESOLVER ── */
 function resolveFlag(groupLetter, team) {
   const seeds = GROUP_SEEDS[groupLetter] || [];
   const target = (team.shortName || team.name || "").toLowerCase();
   let seed = seeds.find(s => target.includes(s.n.toLowerCase()) || s.n.toLowerCase().includes(target.split(" ")[0]));
   if (!seed) {
-    // try matching on first word only (handles "South Korea" vs "Korea Republic" etc.)
     const firstWord = target.split(" ")[0];
     seed = seeds.find(s => s.n.toLowerCase().includes(firstWord));
   }
   return seed ? seed.f : "🏳";
 }
 
-async function fetchStandings() {
-  setStatus("Fetching latest standings…", "loading");
-  try {
-    // Cache-bust so the browser/CDN doesn't serve a stale copy of the raw file.
-    const res = await fetch(DATA_URL + "?t=" + Date.now());
-    if (!res.ok) throw new Error("Fetch failed: HTTP " + res.status);
-    const data = await res.json();
-
-    if (data.status === "error" || !data.groups || Object.keys(data.groups).length === 0) {
-      throw new Error(data.lastError || "No standings data available yet");
-    }
-
-    Object.keys(data.groups).forEach(g => {
-      if (!GROUP_SEEDS[g]) return;
-      standings[g] = data.groups[g].map(t => ({
-        f: resolveFlag(g, t),
-        n: t.shortName || t.name,
-        gp: t.gp, w: t.w, d: t.d, l: t.l,
-        gf: t.gf, ga: t.ga, gd: t.gd, pts: t.pts
-      }));
-    });
-
-    const updated = data.updatedAt ? new Date(data.updatedAt) : new Date();
-    const label = data.status === "stale"
-      ? "Showing cached data from " + updated.toLocaleTimeString()
-      : "Updated " + updated.toLocaleTimeString() + " · Next refresh ~hourly";
-    setStatus(label, data.status === "stale" ? "error" : "");
-  } catch(e) {
-    console.error("Standings fetch error:", e);
-    setStatus("Update failed — showing last data", "error");
+function resolveMatchFlag(tla, name) {
+  const target = (name || "").toLowerCase();
+  for (const seeds of Object.values(GROUP_SEEDS)) {
+    let seed = seeds.find(s => s.n.toLowerCase() === target);
+    if (!seed) seed = seeds.find(s => target.includes(s.n.toLowerCase().split(" ")[0]));
+    if (!seed) seed = seeds.find(s => s.n.toLowerCase().includes(target.split(" ")[0]));
+    if (seed) return seed.f;
   }
-  renderAndScroll();
+  return "🏳";
+}
+
+/* ── BUILD MATCH SECTION ── */
+function buildMatchSection(matches) {
+  const dateStr = new Date().toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'});
+  const label   = `TODAY'S MATCHES · ${dateStr}`;
+
+  if (!matches || matches.length === 0) {
+    return `
+      <div class="section-divider">
+        <span class="section-divider-label">${label}</span>
+        <div class="section-divider-line"></div>
+      </div>
+      <div class="no-matches-today">No World Cup matches scheduled today</div>`;
+  }
+
+  const cards = matches.map(m => {
+    const homeFlag = resolveMatchFlag(m.homeTLA, m.homeTeam);
+    const awayFlag = resolveMatchFlag(m.awayTLA, m.awayTeam);
+
+    const isLive     = m.status === "IN_PLAY" || m.status === "PAUSED";
+    const isFinished = m.status === "FINISHED";
+    const hasScore   = m.homeScore !== null && m.homeScore !== undefined;
+
+    const kickoffHtml = isLive
+      ? `<span class="match-kickoff live">● LIVE</span>`
+      : `<span class="match-kickoff">${m.kickoff}</span>`;
+
+    const vsHtml = hasScore
+      ? `<span class="match-score">${m.homeScore} – ${m.awayScore}</span>`
+      : `<span class="match-vs-label">VS</span>`;
+
+    const statusText  = isFinished ? "Full Time"
+                      : isLive     ? "In Play"
+                      : "Upcoming";
+    const statusClass = isFinished ? "finished" : isLive ? "live" : "";
+
+    return `<div class="match-card">
+      <div class="match-card-header">
+        <span class="match-group-badge">GROUP ${m.group}</span>
+        ${kickoffHtml}
+      </div>
+      <div class="match-teams">
+        <div class="match-team">
+          <span class="match-team-flag">${homeFlag}</span>
+          <span class="match-team-name">${m.homeTeam}</span>
+        </div>
+        <div class="match-vs">${vsHtml}</div>
+        <div class="match-team">
+          <span class="match-team-flag">${awayFlag}</span>
+          <span class="match-team-name">${m.awayTeam}</span>
+        </div>
+      </div>
+      <div class="match-status-bar ${statusClass}">${statusText}${m.venue ? ' · ' + m.venue : ''}</div>
+    </div>`;
+  }).join("");
+
+  return `
+    <div class="section-divider">
+      <span class="section-divider-label">${label}</span>
+      <div class="section-divider-line"></div>
+    </div>
+    <div class="matches-grid">${cards}</div>`;
 }
 
 /* ── BUILD GROUP CARD ── */
@@ -214,20 +346,63 @@ function buildGroupCard(name, teams) {
       <tbody>${rows}</tbody>
     </table>
     <div class="qual-key">
-      <div class="qual-key-item"><div class="qual-dot" style="background:var(--green)"></div>Auto (Top 2)</div>
+      <div class="qual-key-item"><div class="qual-dot" style="background:var(--green)"></div>Auto Qualify (Top 2)</div>
       <div class="qual-key-item"><div class="qual-dot" style="background:var(--amber)"></div>Possible 3rd</div>
     </div>
   </div>`;
 }
 
-/* ── RENDER — 3 rows of 4 groups, duplicated for infinite scroll ── */
+/* ── FETCH ── */
+async function fetchStandings() {
+  setStatus("Fetching latest standings…", "loading");
+  try {
+    const res = await fetch(DATA_URL + "?t=" + Date.now());
+    if (!res.ok) throw new Error("Fetch failed: HTTP " + res.status);
+    const data = await res.json();
+
+    if (data.status === "error" || !data.groups || Object.keys(data.groups).length === 0) {
+      throw new Error(data.lastError || "No standings data available yet");
+    }
+
+    Object.keys(data.groups).forEach(g => {
+      if (!GROUP_SEEDS[g]) return;
+      standings[g] = data.groups[g].map(t => ({
+        f: resolveFlag(g, t),
+        n: t.shortName || t.name,
+        gp: t.gp, w: t.w, d: t.d, l: t.l,
+        gf: t.gf, ga: t.ga, gd: t.gd, pts: t.pts
+      }));
+    });
+
+    todayMatches = data.todayMatches || [];
+
+    const updated = data.updatedAt ? new Date(data.updatedAt) : new Date();
+    const label = data.status === "stale"
+      ? "Showing cached data from " + updated.toLocaleTimeString()
+      : "Updated " + updated.toLocaleTimeString() + " · Next refresh ~hourly";
+    setStatus(label, data.status === "stale" ? "error" : "");
+  } catch(e) {
+    console.error("Standings fetch error:", e);
+    setStatus("Update failed — showing last data", "error");
+  }
+  renderAndScroll();
+}
+
+/* ── RENDER ── */
 function buildHTML() {
-  const groups = Object.entries(standings);
-  // 12 groups → 3 rows of 4
-  const rows = [groups.slice(0,4), groups.slice(4,8), groups.slice(8,12)];
-  return rows.map(row =>
-    `<div class="groups-row">${row.map(([name,teams]) => buildGroupCard(name,teams)).join("")}</div>`
-  ).join("");
+  // Matches first, then all 12 group cards
+  let html = buildMatchSection(todayMatches);
+
+  html += `<div class="section-divider">
+    <span class="section-divider-label">GROUP STANDINGS</span>
+    <div class="section-divider-line"></div>
+  </div>`;
+
+  Object.entries(standings).forEach(([name, teams]) => {
+    html += buildGroupCard(name, teams);
+  });
+
+  return html;
 }
 
 let scrollPos = 0, scrollRAF = null;
@@ -248,6 +423,7 @@ function renderAndScroll() {
   const track = document.getElementById("scrollTrack");
   const html  = buildHTML();
   track.innerHTML = html + html; // duplicate for seamless loop
+  scrollPos = 0;
   startScroll();
 }
 
@@ -264,8 +440,8 @@ function updateClock() {
 
 renderAndScroll();
 fetchStandings();
-setInterval(fetchStandings, 15 * 60 * 1000); // poll every 15 min; data itself updates ~hourly
-setTimeout(() => location.reload(), 60 * 60 * 1000); // full reload every hour as a safety net
+setInterval(fetchStandings, 15 * 60 * 1000);
+setTimeout(() => location.reload(), 60 * 60 * 1000);
 updateClock();
 setInterval(updateClock, 1000);
 </script>
