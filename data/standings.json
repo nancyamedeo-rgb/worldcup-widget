@@ -542,6 +542,19 @@
     ],
     "K": [
       {
+        "name": "Colombia",
+        "shortName": "Colombia",
+        "tla": "COL",
+        "gp": 2,
+        "w": 2,
+        "d": 0,
+        "l": 0,
+        "gf": 4,
+        "ga": 1,
+        "gd": 3,
+        "pts": 6
+      },
+      {
         "name": "Portugal",
         "shortName": "Portugal",
         "tla": "POR",
@@ -555,29 +568,16 @@
         "pts": 4
       },
       {
-        "name": "Colombia",
-        "shortName": "Colombia",
-        "tla": "COL",
-        "gp": 1,
-        "w": 1,
-        "d": 0,
-        "l": 0,
-        "gf": 3,
-        "ga": 1,
-        "gd": 2,
-        "pts": 3
-      },
-      {
         "name": "Congo DR",
         "shortName": "Congo DR",
         "tla": "COD",
-        "gp": 1,
+        "gp": 2,
         "w": 0,
         "d": 1,
-        "l": 0,
+        "l": 1,
         "gf": 1,
-        "ga": 1,
-        "gd": 0,
+        "ga": 2,
+        "gd": -1,
         "pts": 1
       },
       {
@@ -658,9 +658,9 @@
       "awayTLA": "COD",
       "kickoff": "10:00 PM ET",
       "utcDate": "2026-06-24T02:00:00Z",
-      "status": "SCHEDULED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 0,
       "venue": ""
     },
     {
@@ -717,7 +717,7 @@
     }
   ],
   "matchDate": "2026-06-24",
-  "updatedAt": "2026-06-24T01:08:39.597177+00:00",
+  "updatedAt": "2026-06-24T10:35:14.243672+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
