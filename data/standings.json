@@ -545,53 +545,53 @@
         "name": "Colombia",
         "shortName": "Colombia",
         "tla": "COL",
-        "gp": 2,
+        "gp": 3,
         "w": 2,
-        "d": 0,
+        "d": 1,
         "l": 0,
         "gf": 4,
         "ga": 1,
         "gd": 3,
-        "pts": 6
+        "pts": 7
       },
       {
         "name": "Portugal",
         "shortName": "Portugal",
         "tla": "POR",
-        "gp": 2,
+        "gp": 3,
         "w": 1,
-        "d": 1,
+        "d": 2,
         "l": 0,
         "gf": 6,
         "ga": 1,
         "gd": 5,
-        "pts": 4
+        "pts": 5
       },
       {
         "name": "Congo DR",
         "shortName": "Congo DR",
         "tla": "COD",
-        "gp": 2,
+        "gp": 3,
         "w": 0,
-        "d": 1,
+        "d": 2,
         "l": 1,
         "gf": 1,
         "ga": 2,
         "gd": -1,
-        "pts": 1
+        "pts": 2
       },
       {
         "name": "Uzbekistan",
         "shortName": "Uzbekistan",
         "tla": "UZB",
-        "gp": 2,
+        "gp": 3,
         "w": 0,
-        "d": 0,
+        "d": 1,
         "l": 2,
         "gf": 1,
         "ga": 8,
         "gd": -7,
-        "pts": 0
+        "pts": 1
       }
     ],
     "L": [
@@ -599,52 +599,52 @@
         "name": "England",
         "shortName": "England",
         "tla": "ENG",
-        "gp": 2,
-        "w": 1,
+        "gp": 3,
+        "w": 2,
         "d": 1,
         "l": 0,
-        "gf": 4,
+        "gf": 6,
         "ga": 2,
-        "gd": 2,
-        "pts": 4
-      },
-      {
-        "name": "Ghana",
-        "shortName": "Ghana",
-        "tla": "GHA",
-        "gp": 2,
-        "w": 1,
-        "d": 1,
-        "l": 0,
-        "gf": 1,
-        "ga": 0,
-        "gd": 1,
-        "pts": 4
+        "gd": 4,
+        "pts": 7
       },
       {
         "name": "Croatia",
         "shortName": "Croatia",
         "tla": "CRO",
-        "gp": 2,
-        "w": 1,
+        "gp": 3,
+        "w": 2,
         "d": 0,
         "l": 1,
-        "gf": 3,
-        "ga": 4,
-        "gd": -1,
-        "pts": 3
+        "gf": 5,
+        "ga": 5,
+        "gd": 0,
+        "pts": 6
+      },
+      {
+        "name": "Ghana",
+        "shortName": "Ghana",
+        "tla": "GHA",
+        "gp": 3,
+        "w": 1,
+        "d": 1,
+        "l": 1,
+        "gf": 2,
+        "ga": 2,
+        "gd": 0,
+        "pts": 4
       },
       {
         "name": "Panama",
         "shortName": "Panama",
         "tla": "PAN",
-        "gp": 2,
+        "gp": 3,
         "w": 0,
         "d": 0,
-        "l": 2,
+        "l": 3,
         "gf": 0,
-        "ga": 2,
-        "gd": -2,
+        "ga": 4,
+        "gd": -4,
         "pts": 0
       }
     ]
@@ -710,9 +710,9 @@
       "awayTLA": "ENG",
       "kickoff": "5:00 PM ET",
       "utcDate": "2026-06-27T21:00:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "FINISHED",
+      "homeScore": 0,
+      "awayScore": 2,
       "venue": ""
     },
     {
@@ -723,9 +723,9 @@
       "awayTLA": "GHA",
       "kickoff": "5:00 PM ET",
       "utcDate": "2026-06-27T21:00:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 1,
       "venue": ""
     },
     {
@@ -736,9 +736,9 @@
       "awayTLA": "POR",
       "kickoff": "7:30 PM ET",
       "utcDate": "2026-06-27T23:30:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "LIVE",
+      "homeScore": 0,
+      "awayScore": 0,
       "venue": ""
     },
     {
@@ -749,14 +749,14 @@
       "awayTLA": "UZB",
       "kickoff": "7:30 PM ET",
       "utcDate": "2026-06-27T23:30:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "LIVE",
+      "homeScore": 0,
+      "awayScore": 0,
       "venue": ""
     }
   ],
   "matchDate": "2026-06-27",
-  "updatedAt": "2026-06-27T19:55:33.527978+00:00",
+  "updatedAt": "2026-06-27T23:39:22.890460+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
