@@ -684,14 +684,14 @@
       "awayTLA": "CAN",
       "kickoff": "3:00 PM ET",
       "utcDate": "2026-06-28T19:00:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "PAUSED",
+      "homeScore": 0,
+      "awayScore": 0,
       "venue": ""
     }
   ],
   "matchDate": "2026-06-28",
-  "updatedAt": "2026-06-28T15:54:05.695663+00:00",
+  "updatedAt": "2026-06-28T20:39:17.873708+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
