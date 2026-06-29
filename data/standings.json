@@ -671,14 +671,14 @@
       "awayTLA": "PAR",
       "kickoff": "4:30 PM ET",
       "utcDate": "2026-06-29T20:30:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "FINISHED",
+      "homeScore": 5,
+      "awayScore": 6,
       "venue": ""
     }
   ],
   "matchDate": "2026-06-29",
-  "updatedAt": "2026-06-29T19:25:16.118376+00:00",
+  "updatedAt": "2026-06-29T23:38:57.613137+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
