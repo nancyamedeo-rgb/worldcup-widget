@@ -671,9 +671,9 @@
       "awayTLA": "NOR",
       "kickoff": "1:00 PM ET",
       "utcDate": "2026-06-30T17:00:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "IN_PLAY",
+      "homeScore": 0,
+      "awayScore": 1,
       "venue": ""
     },
     {
@@ -691,7 +691,7 @@
     }
   ],
   "matchDate": "2026-06-30",
-  "updatedAt": "2026-06-30T11:30:23.840142+00:00",
+  "updatedAt": "2026-06-30T18:24:33.911996+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
