@@ -671,9 +671,9 @@
       "awayTLA": "NOR",
       "kickoff": "1:00 PM ET",
       "utcDate": "2026-06-30T17:00:00Z",
-      "status": "IN_PLAY",
-      "homeScore": 0,
-      "awayScore": 1,
+      "status": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 2,
       "venue": ""
     },
     {
@@ -684,14 +684,14 @@
       "awayTLA": "SWE",
       "kickoff": "5:00 PM ET",
       "utcDate": "2026-06-30T21:00:00Z",
-      "status": "TIMED",
-      "homeScore": null,
-      "awayScore": null,
+      "status": "FINISHED",
+      "homeScore": 3,
+      "awayScore": 0,
       "venue": ""
     }
   ],
   "matchDate": "2026-06-30",
-  "updatedAt": "2026-06-30T18:24:33.911996+00:00",
+  "updatedAt": "2026-06-30T23:44:18.826358+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
