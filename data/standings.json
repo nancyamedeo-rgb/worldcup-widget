@@ -658,8 +658,8 @@
       "awayTLA": "BIH",
       "kickoff": "8:00 PM ET",
       "utcDate": "2026-07-02T00:00:00Z",
-      "status": "IN_PLAY",
-      "homeScore": 0,
+      "status": "FINISHED",
+      "homeScore": 2,
       "awayScore": 0,
       "venue": ""
     },
@@ -691,7 +691,7 @@
     }
   ],
   "matchDate": "2026-07-02",
-  "updatedAt": "2026-07-02T00:19:15.279720+00:00",
+  "updatedAt": "2026-07-02T11:13:37.571888+00:00",
   "source": "football-data.org",
   "status": "ok"
 }
